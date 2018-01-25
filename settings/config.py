@@ -1,18 +1,18 @@
+import json
 import os
+
 from os.path import join, dirname
-from dotenv import load_dotenv
 
 
-dotenv_path = join(dirname(__file__), '.env')
-load_dotenv(dotenv_path)
+configuration = json.loads(open(join(dirname(__file__), "conf.json"), "r").read())
 
 # Read .env variables
-RESOURCES_FOLDER = os.environ.get("RESOURCES_FOLDER")
-DATA_FOLDER = os.environ.get("DATA_FOLDER")
-IMG_FOLDER = os.environ.get("IMG_FOLDER")
-OUTPUT_FOLDER = os.environ.get("OUTPUT_FOLDER")
-LOG_FILE = os.environ.get("LOG_FILE")
-TEX_SRC = os.environ.get("TEX_SRC")
+RESOURCES_FOLDER = configuration.get("RESOURCES_FOLDER")
+DATA_FOLDER = configuration.get("DATA_FOLDER")
+IMG_FOLDER = configuration.get("IMG_FOLDER")
+OUTPUT_FOLDER = configuration.get("OUTPUT_FOLDER")
+LOG_FILE = configuration.get("LOG_FILE")
+TEX_SRC = configuration.get("TEX_SRC")
 
 # Project absolute path
 PROJECT_DIR = os.path.abspath(os.path.join(os.path.dirname(__file__), os.pardir))
