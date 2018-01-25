@@ -30,7 +30,7 @@ El archivo `main.py` permite compilar `main.tex` y agregar los resultados.
 El pdf resultante se encontrará en la carpeta `output`.
 Correr en la terminal:
 
-```python
+```bash
 python3 main.py --filename {filename}
 ``` 
 
