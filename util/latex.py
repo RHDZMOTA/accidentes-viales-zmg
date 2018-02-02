@@ -34,14 +34,18 @@ class TexObj(object):
         self.path = path
         self.file_name = file_name
 
-    def compile(self, logger):
+    def compile(self, rubber, logger):
         generic_filename = os.path.join(self.path, self.file_name)
         pdf_name = generic_filename + ".pdf"
         tex_name = FileConf.FileNames.tex_src #generic_filename + ".tex"
         with open(tex_name, 'w') as f:
             f.write(self.tex_string)
-        #cmd = ['pdflatex', '-interaction', 'nonstopmode', "-output-directory", self.path,  tex_name]
-        cmd = ["rubber", "--into", self.path, "--pdf", tex_name]
+
+        if rubber:
+            cmd = ["rubber", "--into", self.path, "--pdf", tex_name]
+        else:
+            cmd = ['pdflatex', '-interaction', 'nonstopmode', "-output-directory", self.path,  tex_name]
+
         proc = subprocess.Popen(cmd)
         proc.communicate()
         for file_end in [".aux", ".log", ".toc", ".tex"]:
