@@ -3,5 +3,7 @@
 - Disminución de accidentes viales por fotoinfracción: https://www.jalisco.gob.mx/prensa/noticias/16351
 - Mapas de siniestralidad: https://semov.jalisco.gob.mx/mapa-de-siniestralidad
 - Tablas de accidentes viales: https://semov.jalisco.gob.mx/sites/semov.jalisco.gob.mx/files/estadistica_acc_viales_nov_2017.pdf
+- Auditoria: https://semov.jalisco.gob.mx/sites/semov.jalisco.gob.mx/files/mapa_de_siniestralidad_3.pdf
+- https://semov.jalisco.gob.mx/sites/semov.jalisco.gob.mx/files/mapa_de_siniestralidad_2.pdf
 - {agregar}
 

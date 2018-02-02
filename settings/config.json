@@ -1,1 +1,18 @@
-{"RESOURCES_FOLDER": "resources", "DATA_FOLDER": "data", "IMG_FOLDER": "img", "OUTPUT_FOLDER": "output", "LOG_FILE": "info.log", "TEX_SRC": "main.tex"}
+{
+  "folders": {
+    "RESOURCES_FOLDER": "resources",
+    "DATA_FOLDER": "data",
+    "IMG_FOLDER": "img",
+    "OUTPUT_FOLDER": "output"
+  },
+
+  "files": {
+    "TEX_SRC": "main.tex",
+    "LOG_FILE": "info.log",
+    "accidents_per_indicator": "accidentes_viales_por_indicador.csv",
+    "accidents_per_year": "accidentes_viales_zmg_annual.csv",
+    "death_by_alcohol": "muertos_alcohol_zmg.csv",
+    "death_zmg": "muertos_zmg.csv"
+  }
+
+}

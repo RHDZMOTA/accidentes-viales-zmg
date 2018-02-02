@@ -12,7 +12,7 @@ def create_tex(variables, file_name, path, logger):
         raise ValueError("The parameter 'variables' must be an instance of dict.")
     logger.info("Function call: create_tex")
     tex_src = get_text_src()
-    tex_formatted = tex_src % variables
+    tex_formatted = tex_src  # % variables
     tex = TexObj(tex_string=tex_formatted, path=path, file_name=file_name)
     return tex
 

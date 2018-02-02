@@ -1,1 +1,1 @@
-from .config import PROJECT_DIR, FileConf, LogConf
+from .config import config_app, PROJECT_DIR, FileConf, LogConf
