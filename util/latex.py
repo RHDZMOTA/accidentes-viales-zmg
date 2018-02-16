@@ -54,9 +54,12 @@ class TexObj(object):
                 os.unlink(temp)
             if os.path.exists(self.file_name + file_end):
                 os.unlink(self.file_name + file_end)
-        os.rename(
-            src=os.path.join(FileConf.Paths.output, TEX_SRC.replace(".tex", ".pdf")),
-            dst=pdf_name
-        )
+        try:
+            os.rename(
+                src=os.path.join(FileConf.Paths.output, TEX_SRC.replace(".tex", ".pdf")),
+                dst=pdf_name
+            )
+        except Exception as e:
+            logger.warn("Rename not possible: %s" % str(e))
         logger.info("File {} generated.".format(pdf_name))
 
