@@ -16,8 +16,12 @@ Solicitar el url necesario para clonar el repo desde overleaf.
 Al tener tal url, seguir los siguientes pasos
 (nota: instrucciones para **linux**):
 
-1. Instala: `sudo apt install texlive-lang-spanish`
-1. Crea un ambiente controlado e instala las dependencias:
+1. Instalar TeX: `sudo apt install texlive-full`
+1. Instalar tlmgr: `sudo apt install xzdec`
+1. Inicializar la base de datos para paquetes de LaTeX: `tlgmr init-usertree`
+1. Instalar rubber: `sudo apt instsall rubber`
+1. Instalar: `sudo apt install texlive-lang-spanish`
+1. Crear un ambiente controlado e instala las dependencias:
     * `virtualenv --python=python3 venv`
     * `source venv/bin/activate`
     * `pip install -r requirements.txt`
