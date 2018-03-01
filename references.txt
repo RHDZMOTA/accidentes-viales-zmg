@@ -5,5 +5,8 @@
 - Tablas de accidentes viales: https://semov.jalisco.gob.mx/sites/semov.jalisco.gob.mx/files/estadistica_acc_viales_nov_2017.pdf
 - Auditoria: https://semov.jalisco.gob.mx/sites/semov.jalisco.gob.mx/files/mapa_de_siniestralidad_3.pdf
 - https://semov.jalisco.gob.mx/sites/semov.jalisco.gob.mx/files/mapa_de_siniestralidad_2.pdf
-- {agregar}
-
+- https://datos.jalisco.gob.mx/instituciones
+- http://apps.who.int/iris/bitstream/10665/85873/1/9789243500898_spa.pdf?ua=1
+- http://www.who.int/violence_injury_prevention/publications/road_traffic/distracted_driving_en.pdf
+- https://www.edgarsnyder.com/car-accident/cause-of-accident/cell-phone/cell-phone-statistics.html
+- https://ac.els-cdn.com/S1742287615000092/1-s2.0-S1742287615000092-main.pdf?_tid=55c8f5fa-137b-11e8-920e-00000aacb362&acdnat=1518828288_61eff6f0b1afebf703504c19799d88f4
