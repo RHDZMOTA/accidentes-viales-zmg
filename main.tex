@@ -228,10 +228,7 @@ La Secretaria de Planeacion y Administración Financiera (SEPAF) es responsable 
 \newpage
 
 \section{Alternativas de solución}\label{sec:alternatives}
-[Esta sección es la más larga y
-laboriosa del proyecto. Dependiendo
-del proyecto, se evaluarán 1 o 2
-alternativas de solución. 
+
 % * <rohdzmota@gmail.com> 2018-02-17T00:23:06.435Z:
 % 
 % Definir un indicador para el problema central y 3 indicadores para el específico.
@@ -398,7 +395,43 @@ resultado de 200 simulaciones para los siguientes 3 años.
 
 La simulacion indica que para el 2021 se estiman 4,629,984 vehículos en circulación.
 
+\subsubsection{Pronóstico: Manejo con distracciones}
+
+En 2016 el Instituto de Información Estadística y Geográfica de Jalisco indentificó que
+aproximadamente 60\% de los conductores de automóvil manejan con alguna distracción
+relacionada con el uso de Smartphones. Para modelar la dinámica de esta propoción de conductores podemos
+asumir que existe una relación proporcional con el procentaje de usuarios de Smartphone.
+
+Por lo tanto, se define la siguiente relación lineal:
+
+\begin{equation}
+\delta_t = k_t s_t
+\end{equation}
+
+Donde $\delta_t$ representa el porcentaje de conductores que manejan con distracciones de Smartphone,
+$k_t$ es un factor proporcional y $s_t$ es el porcentaje de usuarios de Smartphone. En el caso más
+simple $k_t = k$ es constante.
+
+
+Sabemos que $s_{2016} = 67.23$ y por lo tanto $k_{2016} = k = 60/67.23 = 0.892459$.
+
+Usando los datos del pronóstico anterior, se genera el pronóstico para $\delta_t$.
+
+	\begin{figure}[H]\centering
+	\includegraphics[width=0.6\textwidth]{resources/img/distraction.png}
+	\caption{\label{fig:distr} Distracciones generadas por Smartphones. Fuente: Elaboración propia}
+    \end{figure}
+
+Para el 2021, usando las tendencias y supuestos mostrados en esta sección, se estima
+que aproximadamente el 83.81\% de los conductores manejen con distracciones generadas
+directamente por un smartphone.
+
+Esta cifra es particularmente alarmante puesto que actualmente la SEMOV identifica
+que cerca del 70\% de los percances viales son generados por usar el celular de
+forma indebida.
+
 \subsection{Situación con proyecto}
+
 
 
 \subsection{Análisis Costo-Beneficio}

@@ -98,8 +98,8 @@ def create_vehicles_plot():
     plt.title("Crecimiento porcentual")
     plt.ylabel("%")
 
-    plt.savefig(parque_vehicular_img, bbox_inches="tight", pad_inches=0.5, dpi=100)
-    plt.close()
+    #plt.savefig(parque_vehicular_img, bbox_inches="tight", pad_inches=0.5, dpi=100)
+    #plt.close()
 
     average_growth = np.mean(jalisco_diff[-5:])
 
@@ -158,14 +158,30 @@ def create_tech_plots():
     plt.savefig(smartphone_usage_img, bbox_inches="tight", pad_inches=0.5, dpi=100)
     plt.close()
 
+    k = 0.892459
+    delta = lambda x: k * x
+    delta_list = [delta(x) for x in result]
+
     df = pd.DataFrame([])
     df["years"] = years
     df["months"] = df.years * 12
     df["celphone_exposure"] = gs
     df["smartphone_proportion"] = ss
     df["smartphone_exposure"] = result
+    df["delta"] = delta_list
     df.to_csv("output/forecast_smartphone.csv", index=None)
 
+    distraction_img = join(FileConf.Paths.img, "distraction.png")
+    plt.plot(years, delta_list, label="Distracción por Smartphone")
+    plt.title("Porcentaje de conductores con distracciones por Smartphone")
+    plt.xlabel("Años a partir del 2015")
+    plt.ylabel("%")
+    plt.legend()
+
+    plt.savefig(distraction_img, bbox_inches="tight", pad_inches=0.5, dpi=100)
+    plt.close()
+
+    delta_list[-1]
 
 def create_vehicle_forecast():
     vehicles = pd.read_csv(join(FileConf.Paths.data, "vehiculos_en_circulacion.csv"))
@@ -199,6 +215,9 @@ def create_vehicle_forecast():
     plt.close()
 
     df.to_csv("output/forecast_vehicles.csv", index=False)
+
+    df.iloc[-1].plot.kde()
+    plt.show()
 
     df.iloc[-1].mean()
     df.iloc[-1].describe()
