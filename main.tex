@@ -287,13 +287,85 @@ la seguirdad víal puede verse afectada de forma relevante.
 
 \subsubsection{Definición de indicadores}
 
-[TODO: definir indicador para objetivo general y 3 para el objectivo específicio]]
+Los indicadores nos permiter medir el desempeño del proyecto bajo distintos escenarios.
+Respecto al objectivo general, se propone el siguiente indicador:
 
-\subsubsection{Pronósitico de la adopción de tecnología celular}
+\begin{itemize}
+	\item \textbf{Accidentes automovilísticos letales por año}: número absoluto de accidentes automóvilisticos
+con al menos una muerte involucrada.
+\end{itemize}
 
-[TODO: Usar método exponencial]
+La disminución del valor de este indicador se relaciona de forma directa con la intención propuesta en el objectivo general.
 
-\subsubsection{Pronósitico del crecimiento del parque vehicular}
+Para el objecto particular se proponen:
+
+\begin{itemize}
+	\item \textbf{Pocentaje de usuarios que manejan con distracciones}: actualmente 60\% de los conductores manejan con
+distracciones relacionadas al uso de celular.
+	\item \textbf{Número de muertes en accidentes automovilísticos que involucren uso de celular}: cerca del 70\% de los
+accidentes automovilísticos son generados por uso inapropiado de celular.
+	\item \textbf{Ahorro estimado}: la reducción de siniestros tiene beneficios económicos positivos para la población
+afectada.
+\end{itemize}
+
+Se puede apreciar que los indicadores representan de forma cuantitativa el cumplimiento del objetivo específico.
+En el caso particular de los primeros dos indicadores se deberá logarar una disminución. Mientras que el último
+indicador debería aumentar.
+
+\subsubsection{Pronósitico: Adopción de tecnología celular}
+
+Se propone usar un modelo de la familia exponencial para pronosticar la adopción de tecnología celular en el estado
+de Jalisco. Asumimos que el procentaje de adopción a nivel estado es igualmente representativo para la Zona
+Metropolitana de Guadalajara puesto que esta consta de varios municipios relevantes del mismo y
+puede ser considerado como una muestra significativa.
+
+El modelo exponencial propuesto en esta sección debe cumplir con las siguientes características:
+\begin{itemize}
+	\item Comportamiento asintótico respecto a $y=100$ puesto que se estan manejando porcentajes.
+	\item Relación no lineal respecto al tiempo ya que se está modelando la adopción de una tecnología.
+\end{itemize}
+
+La siguiente figura ilustra algunos ejemplos de comportamiento exponencial:
+
+	\begin{figure}[H]\centering
+	\includegraphics[width=0.6\textwidth]{resources/img/modelo_exp.png}
+	\caption{\label{fig:exponential_behaviour} Comportamiento Exponencial. Fuente: Elaboración propia}
+    \end{figure}
+
+Por lo tanto, se busca un modelo de la siguiente forma:
+
+\begin{equation}
+f(x) = -\alpha e^{-\beta x} + 100
+\end{equation}
+
+Donde $\alpha$ y $\beta$ son parámetros de ajuste según el contexto del problema.
+
+En el caso de porcentage de usuarios de telefonía móvil general sabemos que en 2015 se tenía 76.32\% de usuarios y
+en 2016 81.8\%. Por lo tanto, se buscaron los parámetros tales que:
+
+\begin{align*}
+f_g(0) = 76.32 \\
+f_g(1) = 81.8
+\end{align*}
+
+Siguiendo la misma metodología se determinaron los parámetros para el crecimiento del uso de smartphone de tal forma
+que se cumpliera:
+
+\begin{align*}
+f_s(0) = 69.8 \\
+f_s(1) = 82.2
+\end{align*}
+
+Los resultados:
+
+\begin{align*}
+f_g(x) = -23.68e^{-0.26321x}+100 \\
+f_s(x) = -30.2e^{-0.52864x}+100
+\end{align*}
+
+
+
+\subsubsection{Pronósitico: Crecimiento del parque vehicular}
 
 [TODO: Usar cadenas de markov]
 
