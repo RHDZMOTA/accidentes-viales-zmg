@@ -363,12 +363,40 @@ f_g(x) = -23.68e^{-0.26321x}+100 \\
 f_s(x) = -30.2e^{-0.52864x}+100
 \end{align*}
 
+Con estos modelos se crea un pronóstico para los siguientes 3 años (6 años a partir del 2015).
 
+	\begin{figure}[H]\centering
+	\includegraphics[width=0.6\textwidth]{resources/img/pronostico_adopcion.png}
+	\caption{\label{fig:pron_adp} Pronóstico de tasas de adopción. Fuente: Elaboración propia}
+    \end{figure}
+
+Los resultados indican que a finales del 2021 aproximadamente 95\% de los habitantes del Estado
+tendrán tecnología celular disponible y 98.73\% de estos usuarios tendrán un Smartphone.
+
+Combinando estos pronósticos es posible determinar el procentaje de la población expuesta al
+uso de Smartphones.
+
+	\begin{figure}[H]\centering
+	\includegraphics[width=0.6\textwidth]{resources/img/smartphone_usage.png}
+	\caption{\label{fig:smart_usage} Uso del Smartphone. Fuente: Elaboración propia}
+    \end{figure}
 
 \subsubsection{Pronóstico: Crecimiento del parque vehicular}
 
-[TODO: Usar cadenas de markov]
+Para pronosticar el crecimiento del parque vehicular en el Estado se usa
+un modelo con bases probabilísticas que nos permite generar distintas
+simulaciones e identificar la tendencia media.
 
+En este caso se usó como base el crecimiento historico generado en los
+últimos 20 años. la sigueinte figura representa de forma visual el
+resultado de 200 simulaciones para los siguientes 3 años.
+
+	\begin{figure}[H]\centering
+	\includegraphics[width=0.6\textwidth]{resources/img/vehicle_forecast_img.png}
+	\caption{\label{fig:vehicle_forecast} Pronóstico de vehículos en circulación. Fuente: Elaboración propia}
+    \end{figure}
+
+La simulacion indica que para el 2021 se estiman 4,629,984 vehículos en circulación.
 
 \subsection{Situación con proyecto}
 

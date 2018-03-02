@@ -120,5 +120,89 @@ def create_phone_usage_plot():
     plt.close()
 
 
+def create_tech_plots():
+    def create_exp_function(alpha, beta):
+        return lambda x: -alpha*np.exp(-beta*x)+100
+    f_g = create_exp_function(23.68, 0.26321)
+    f_s = create_exp_function(30.2, 0.52864)
+    step = 1/12
+    initial_value = 0
+    final_value = 3 + 3 + step
+    years = np.arange(initial_value, final_value, step)
+
+    gs = [f_g(x) for x in years]
+    ss = [f_s(x) for x in years]
+
+    result = [g * s / 100 for g, s in zip(gs, ss)]
+
+    forecast_usage_img = join(FileConf.Paths.img, "pronostico_adopcion.png")
+    plt.plot(years, gs, label="Tecnología celular general")
+    plt.plot(years, ss, label="Smartphones")
+    plt.plot([0, 1], [76.32, 81.8], ".")
+    plt.plot([0, 1], [69.8, 82.2], ".")
+    plt.title("Pronóstico de adopción de tecnología celular")
+    plt.xlabel("Años a partir del 2015")
+    plt.ylabel("%")
+    plt.legend()
+
+    plt.savefig(forecast_usage_img, bbox_inches="tight", pad_inches=0.5, dpi=100)
+    plt.close()
+
+    smartphone_usage_img = join(FileConf.Paths.img, "smartphone_usage.png")
+    plt.plot(years, result, label="Smartphones")
+    plt.title("Porcentage de la población con Smartphones")
+    plt.xlabel("Años a partir del 2015")
+    plt.ylabel("%")
+    plt.legend()
+
+    plt.savefig(smartphone_usage_img, bbox_inches="tight", pad_inches=0.5, dpi=100)
+    plt.close()
+
+    df = pd.DataFrame([])
+    df["years"] = years
+    df["months"] = df.years * 12
+    df["celphone_exposure"] = gs
+    df["smartphone_proportion"] = ss
+    df["smartphone_exposure"] = result
+    df.to_csv("output/forecast_smartphone.csv", index=None)
+
+
+def create_vehicle_forecast():
+    vehicles = pd.read_csv(join(FileConf.Paths.data, "vehiculos_en_circulacion.csv"))
+    jalisco = vehicles.Jalisco.values
+    years = vehicles.Anios.values
+    jalisco_diff = jalisco[1:] / jalisco[:-1] - 1
+
+    growth_last_10 = jalisco_diff[-20:]
+
+    def get_next_gowth():
+        return np.random.choice(growth_last_10, 5)
+
+    def get_next(last):
+        forecast = [last]
+        for r in get_next_gowth():
+            forecast.append(forecast[-1] * (1 + r))
+        return forecast
+
+    last = jalisco[-1]
+    df = pd.DataFrame([])
+    for i in range(200):
+        df[str(i)] = get_next(last)
+
+    vehicle_forecast_img = join(FileConf.Paths.img, "vehicle_forecast_img.png")
+    df.plot(legend=False)
+    plt.title("Simulación: parque vehicular")
+    plt.xlabel("Años a partir del 2016")
+    plt.ylabel("Número de vehículos")
+
+    plt.savefig(vehicle_forecast_img, bbox_inches="tight", pad_inches=0.5, dpi=100)
+    plt.close()
+
+    df.to_csv("output/forecast_vehicles.csv", index=False)
+
+    df.iloc[-1].mean()
+    df.iloc[-1].describe()
+
+
 def create_media():
     return {}
