@@ -1,6 +1,7 @@
 from os.path import join
 
 import matplotlib.pyplot as plt
+import numpy as np
 import pandas as pd
 
 from settings import FileConf
@@ -8,8 +9,6 @@ from settings import FileConf
 
 def create_general_annual_accidents_plot():
     df = pd.read_csv(FileConf.FileNames.accidents_per_year)
-
-    df.head()
 
     accidentes_general = df["accidentes_general"].values
     accidentes_general_diff = -100*(accidentes_general[1:] - accidentes_general[:-1]) / accidentes_general[:-1]
@@ -62,6 +61,62 @@ def create_general_annual_accidents_plot():
 
     plt.savefig(accidentes_general_segregacion_img, bbox_inches="tight", pad_inches=0.5, dpi=100)
     plt.close()
+    plt.close()
+
+
+def create_distractions_plot():
+
+    distractions = pd.read_csv(join(FileConf.Paths.data, "distacciones_2016.csv"))
+
+    distractions_img = join(FileConf.Paths.img, "manejo_con_celular.png")
+    distractions.plot.bar(x="municipio", stacked=True)
+    plt.title("Conducción con distracciones por smart-phones en 2016")
+    plt.ylabel("%")
+
+    plt.savefig(distractions_img, bbox_inches="tight", pad_inches=0.5, dpi=100)
+    plt.close()
+
+    distractions.mean()
+
+
+def create_vehicles_plot():
+
+    vehicles = pd.read_csv(join(FileConf.Paths.data, "vehiculos_en_circulacion.csv"))
+
+    jalisco = vehicles.Jalisco.values
+    years = vehicles.Anios.values
+    jalisco_diff = jalisco[1:] / jalisco[:-1] - 1
+
+    parque_vehicular_img = join(FileConf.Paths.img, "parque_vehicular.png")
+    fig, ax = plt.subplots(figsize=(7, 5))
+    plt.subplot(2, 1, 1)
+    plt.plot(years, jalisco)
+    plt.title("Parque vehicular en Jalisco")
+    plt.ylabel("Vehículos")
+    plt.subplot(4, 1, 4)
+    plt.bar(years[1:], 100 * jalisco_diff)
+    plt.title("Crecimiento porcentual")
+    plt.ylabel("%")
+
+    plt.savefig(parque_vehicular_img, bbox_inches="tight", pad_inches=0.5, dpi=100)
+    plt.close()
+
+    average_growth = np.mean(jalisco_diff[-5:])
+
+
+def create_phone_usage_plot():
+
+    phone_type = pd.read_csv(join(FileConf.Paths.data, "jaslico_tipo_celular.csv"))
+    phone_users = pd.read_csv(join(FileConf.Paths.data, "usuarios_jalisco_celular.csv"))
+
+    fig, ax = plt.subplots(figsize=(5, 5))
+    phone_type_img = join(FileConf.Paths.img, "tipo_de_celular.png")
+    phone_type[["smartphone", "celular_comun", "anio"]].plot.bar(x="anio", stacked=True)
+    plt.title("Tipo de celular en Jalisco")
+    plt.ylabel("%")
+    plt.xlabel("")
+
+    plt.savefig(phone_type_img, bbox_inches="tight", pad_inches=0.5, dpi=100)
     plt.close()
 
 
