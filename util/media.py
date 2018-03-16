@@ -136,12 +136,12 @@ def create_tech_plots():
     result = [g * s / 100 for g, s in zip(gs, ss)]
 
     forecast_usage_img = join(FileConf.Paths.img, "pronostico_adopcion.png")
-    plt.plot(years, gs, label="Tecnología celular general")
-    plt.plot(years, ss, label="Smartphones")
-    plt.plot([0, 1], [76.32, 81.8], ".")
-    plt.plot([0, 1], [69.8, 82.2], ".")
+    plt.plot(years + 2015, gs, label="Tecnología celular general")
+    plt.plot(years + 2015, ss, label="Smartphones")
+    plt.plot([2015, 2016], [76.32, 81.8], ".")
+    plt.plot([2015, 2016], [69.8, 82.2], ".")
     plt.title("Pronóstico de adopción de tecnología celular")
-    plt.xlabel("Años a partir del 2015")
+    plt.xlabel("Años")
     plt.ylabel("%")
     plt.legend()
 
@@ -149,9 +149,9 @@ def create_tech_plots():
     plt.close()
 
     smartphone_usage_img = join(FileConf.Paths.img, "smartphone_usage.png")
-    plt.plot(years, result, label="Smartphones")
+    plt.plot(years + 2015, result, label="Smartphones")
     plt.title("Porcentage de la población con Smartphones")
-    plt.xlabel("Años a partir del 2015")
+    plt.xlabel("Años")
     plt.ylabel("%")
     plt.legend()
 
@@ -172,9 +172,9 @@ def create_tech_plots():
     df.to_csv("output/forecast_smartphone.csv", index=None)
 
     distraction_img = join(FileConf.Paths.img, "distraction.png")
-    plt.plot(years, delta_list, label="Distracción por Smartphone")
+    plt.plot(years + 2015, delta_list, label="Distracción por Smartphone")
     plt.title("Porcentaje de conductores con distracciones por Smartphone")
-    plt.xlabel("Años a partir del 2015")
+    plt.xlabel("Años")
     plt.ylabel("%")
     plt.legend()
 
@@ -213,6 +213,10 @@ def create_vehicle_forecast():
 
     plt.savefig(vehicle_forecast_img, bbox_inches="tight", pad_inches=0.5, dpi=100)
     plt.close()
+
+    df["average"] = df.mean(1)
+    df["accidentes"] = 7 * df["average"] / 1000
+    df["muertes"] = df["accidentes"] * 0.0226
 
     df.to_csv("output/forecast_vehicles.csv", index=False)
 
