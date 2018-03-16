@@ -395,9 +395,7 @@ resultado de 200 simulaciones para los siguientes 3 años.
 
 La simulación indica que para el 2021 se estiman 4,679,213 vehículos en circulación.
 En el 2016 se reportaron 7 accidentes por cada 1000 vehículos en circulación y de tales accidentes el
-2.26\% fueron fatales. Siguiendo la misma tendencia se deberían de reportar
-32,754 accidentes vehiculares de los cuales 740 serían accidentes fatales
-y al menos 518 estarían relacionados con el uso de celular.
+2.26\% fueron fatales.
 
 
 \subsubsection{Pronóstico: Manejo con distracciones}
@@ -433,9 +431,80 @@ directamente por un smartphone.
 
 Esta cifra es particularmente alarmante puesto que actualmente la SEMOV identifica
 que cerca del 70\% de los percances viales son generados por usar el celular de
-forma indebida.
+forma indebida. La siguiente figura muesta los resultados generales referentes a la adopción de
+tecnología celular.
+
+	\begin{figure}[H]\centering
+	\includegraphics[width=0.6\textwidth]{resources/img/smartphone_complete_forecast.png}
+	\caption{\label{fig:compare_forecast} Pronóstico General. Fuente: Elaboración propia}
+    \end{figure}
+
+\subsubsection{Accidentes por uso de smartphone}
+
+Dado el pronósitoco del cecimiento del parque vehicular y el porcentaje de conductores expuestos a
+distracciones con Smartphones, es posible calcular el número de accidendes generados particularmente
+por el uso de esta tecnología al conducir. Por estadísticas de la Semov, sabemos que en 2016 se registraron 7
+accidentes automovilísticos por cada 1000 vehículos en circulación. Adicionalmente, un estudio realizado por este
+mismo organismo sugiere que actualmente el 70\% de los siniestros son generados por una distracción directa de la
+tecnología celular. En este sentido entonces podemos asumir 4.9 accidentes por cada 1000 vehículos en circulación.
+
+Por lo tanto, se propone la siguiente formula para calcular el número de accidentes viales generados por el uso
+de celular, basado en datos del 2016:
+
+\begin{equation}
+accidentes_{t} = \frac{4.9 * vehiculos_t * \delta_t}{1000 * 0.6}
+\end{equation}
+
+Usando esta propuesta obtenemos los siguientes resultados:
+
+	\begin{figure}[H]\centering
+	\includegraphics[width=0.6\textwidth]{resources/img/smart_accidents.png}
+	\caption{\label{fig:smart_accidents} Accidentes generados por SmartPhones. Fuente: Elaboración propia}
+    \end{figure}
+
+Se puede apreciar la tendencia alcista. De estos resultados, se espera que al menos 2.26\% de tales accidentes sean
+fatales.
 
 \subsection{Situación con proyecto}
+
+El proyecto pretende generar un alto impacto en la disminución de la sinestralidad generada principalmente por el uso
+de Smartphones. No obstante, la tendencia de carácter exponencial que muestra la adopción de esta tecnología en la
+población de interés genera un alto reto.
+
+En particular la implementación del proyecto debería cambiar la constante $k_t$ por año (en la sección anterior
+se mostraron los resultados invariantes). Esta constante representa la relación entre los usuarios activos de Smartphones
+y el porcentaje de conductores con distracciones por esta tecnología.
+
+Bajo un escenario conservador, podríamos esperar que los efectos del proyecto tengan una relación lineal en el tiempo
+con $k_t$. La razón de cambio mínima esperada es de $0.02$ unidades.
+
+\begin{equation}
+k_{t} = k - 0.02 * t
+\end{equation}
+
+Con estos supuestos, el pronóstico del porcentaje de conductores con distracciones de smartphone cambiaría de la
+siguiente forma:
+
+	\begin{figure}[H]\centering
+	\includegraphics[width=0.6\textwidth]{resources/img/distraction_compare_img.png}
+	\caption{\label{fig:smart_accidents_compare} Distracciones por Smartphones al conducir. Fuente: Elaboración propia}
+    \end{figure}
+
+Considerando estos resultados el numero de accidentes generados por el uso de Smartphones tendría el siguiente
+comportamiento:
+
+	\begin{figure}[H]\centering
+	\includegraphics[width=0.6\textwidth]{resources/img/smart_accidents_after.png}
+	\caption{\label{fig:smart_accidents_after} Accidentes viales. Fuente: Elaboración propia}
+    \end{figure}
+
+Suponiendo un costo de siniestro promedio de 24,603 MXN (según la Convención de Aseguradores de México) el ahorro
+monterio anual sería la siguiente:
+
+	\begin{figure}[H]\centering
+	\includegraphics[width=0.6\textwidth]{resources/img/accident_savings.png}
+	\caption{\label{fig:accident_savings} Ahorro generado. Fuente: Elaboración propia}
+    \end{figure}
 
 
 
