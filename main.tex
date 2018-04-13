@@ -589,7 +589,8 @@ El manejo de la infraestructura y servicios en la nube es otra cuestión de suma
 \item Jr Data Engineer/Scientist: \$30,000.00 MXN
 \end{itemize}
 
-En general de forma mensual se pagaría \$ 375,000.00 en sueldos de ingeniería lo cual es \$4,500,000.00 MXN de forma anual. 
+En general de forma mensual se pagaría \$ 375,000.00 en sueldos de ingeniería lo cual es \$4,500,000.00 MXN de forma anual. Añadiendo costos de hardware y software
+este monto aumenta a \$5,000,000.00 MXN en el primer año. 
 
 \textbf{Almacenamiento y procesamiento de datos en la nube}
 
@@ -597,16 +598,58 @@ El presidente de la Asociación Mexicana de Transporte y Movilidad afirma que lo
 lo largo de su vida. Suponiendo que una persona suele manejar entre los 18 y 60 años entonces al día en promedio 
 una persona gasta 1.7 horas manejando. Nuestra aplicación pretende supervisar este tiempo en conducción, capturando 
 información de los sensores de GPS y acelerómetro cada 10 segundos. Esto equivale a recibir 612 eventos de información 
-diarios o 223380 eventos de información al año por usuario. 
+diarios por usuario o 223380 eventos de información al año por usuario. 
+
+Se estima que cada evento de información contenga máximo 100,000 bytes.
+Por lo tanto, de forma anual se espera almacenar 22.338 gigabytes por usuario. 
+
+
+
+Se utilizarán dos servicios principales para al almacenamiento y procesamiento de datos: Google PubSub y Google BigQuery.
+\begin{itemize}
+\item PubSub: \$4.8 MXN por gigabyte por año.
+\item BigQuery: \$8.4 MXN por gigabyte por año. 
+\end{itemize}
+
+Debido a que se podrían usar otros servicios relacionados, se considera prudente aumentar el costo anual un 20\%. 
 
 \textbf{Incentivos}
 
--- work in progress --
+Se propone un esquema de incentivos en el cual tanto el conductor, la 
+sociedad y el gobierno tengan interés en participar de forma productiva 
+en el proyecto. Debido a que en la app se puede capturar 
+la información del conductor se propone manejar una ''cuenta virtual'' en 
+la cual se irá abonando cierta recompensa a los usuarios activos de la 
+app que aporten información y no usen su celular. 
 
+En particular se propone que la cuenta virtual del conductor aumente en 
+\$1.20 MXN por cada hora que se esté manejando sin uso del celular durante 
+un día laboral. Este proyecto considera que los usuarios que manejan sin 
+distracción tendrán un cumplimiento del 80\% en poder acumular las horas. 
+
+\textbf{Costos totales}
+
+Agrupando los costos del proyecto tenemos la siguiente tabla:
+
+	\begin{figure}[H]\centering
+	\includegraphics[width=0.8\textwidth]{resources/img/costos.png}
+	\caption{\label{fig:costos} Estimación monetaria de los costos. Fuente: Elaboración propia}
+    \end{figure}
+
+Los datos que se usaron como base son los descritos en esta sección junto con los proyectados en secciones anteriores. Entre estos se encuentran: 
+
+	\begin{figure}[H]\centering
+	\includegraphics[width=0.6\textwidth]{resources/img/datos_costo.png}
+	\caption{\label{fig:datcostos} Datos de referencia. Fuente: Elaboración propia}
+    \end{figure}
 
 \subsubsection{Beneficios}
 
--- work in progress --
+La evaluación social es una herramienta que consiste en identificar, cuantificar y valorar los beneficios sociales que tiene un proyecto para una región determinada en un horizonte o plazo de tiempo.
+
+Al igual que el beneficio principal del proyecto es la prevención de accidentes, lo que nos lleva a salvar vidas humanas y beneficiar las economías de las familias al evitar un accidente.
+
+Para la evaluación de los beneficios del alcance del proyecto, se plantearon las siguientes situaciones:
 
 \textbf{Reducción de accidentes viales}
 
@@ -619,8 +662,6 @@ monetario anual sería el siguiente:
 	\includegraphics[width=0.6\textwidth]{resources/img/accident_savings.png}
 	\caption{\label{fig:accident_savings} Ahorro generado. Fuente: Elaboración propia}
     \end{figure}
-
-
 
 Demostrando las gráficas, podemos comparar que los siniestros han incrementado de manera drástica debido a la distracción por el uso de Smart Phone. Concluyendo que el comportamiento del ahorro está en función a la distracción por celulares, entre otras variables que lo determinan. Es por esto que al reducir dicho factor, el gasto por siniestros se verá afectado directamente. 
  
@@ -636,29 +677,43 @@ La siguiente gráfica ilustra el número de vidas salvadas por año:
 
 	\begin{figure}[H]\centering
 	\includegraphics[width=0.6\textwidth]{resources/img/saved_lifes.png}
-	\caption{\label{fig:vidas_salvadas} Estimación de vidas salvadas. Fuente: Elaboración propia}
+	\caption{\label{fig:vidas_salvadas} Estimación de vidas salvadas. Fuente: Elaboración propia con datos de la SEMOV y The Value of Statical Life in Mexico}
     \end{figure}
 
 
-Se utiliza el valor estadístico de la vida (\$ 1,687,037.00 MXN) proporcionado por ... para ...
+Se utiliza el valor estadístico de la vida (\$ 1,687,037.00 MXN) proporcionado por "The value of statical life in Mexico" para poder realizar una proyección con la cantidad monetaria exacta. De esta manera se sabe el impacto monetario que tiene el proyecto al prevenir un accidente y por consiguiente salvar una vida. 
 
 El beneficio monetario resultante es el siguiente:
-
 
 	\begin{figure}[H]\centering
 	\includegraphics[width=0.6\textwidth]{resources/img/saved_lifes_money.png}
 	\caption{\label{fig:vidas_salvadas_dinero} Estimación monetaria de vidas salvadas. Fuente: Elaboración propia}
     \end{figure}
 
-Se puede observar... 
 
-\textbf{Información accionable}
+\textbf{Beneficios totales}
 
--- work in progress --
+Agrupando los beneficios de este proyecto tenemos 
+la siguiente tabla: 
 
-\textbf{Rentabilidad}
+	\begin{figure}[H]\centering
+	\includegraphics[width=0.6\textwidth]{resources/img/beneficios.png}
+	\caption{\label{fig:beneficios} Estimación monetaria de los beneficios. Fuente: Elaboración propia}
+    \end{figure}
 
--- work in progress --
+\subsubsection{Neto}
+
+Dado el costo analizado previamente y los beneficios,
+tenemos la siguiente tabla con la información agregada: 
+
+	\begin{figure}[H]\centering
+	\includegraphics[width=0.6\textwidth]{resources/img/neto.png}
+	\caption{\label{fig:neto} Estimación de beneficios netos. Fuente: Elaboración propia}
+    \end{figure}
+
+Utilizando una tasa de descuento propuesta por SHCP del 10\%, el valor presente neto del proyecto sería de: \$68,068,129.04
+
+Se puede apreciar que los beneficios del proyecto son suficientes para satisfacer la demanda de costos por lo cual podemos concluir que el proyecto es rentable. 
 
 \subsection{Simulación Montecarlo}
 
